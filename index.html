@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dei Frati · Trattoria Italiană · Brașov</title>
+<meta name="description" content="Dei Frati — Gătim și servim în familie, mănânci, bei și te simți ca acasă! Bucătărie italiană elevată și vin în surroundings snug și relaxate, Brașov." />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,500;1,600&family=Lato:wght@300;400;700;900&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+:root{
+  --terracotta:#C8553D;
+  --terracotta-dark:#a8412c;
+  --olive:#7A8450;
+  --olive-dark:#5e6739;
+  --gold:#D4A24C;
+  --gold-light:#e6b96a;
+  --cream:#F7F3E9;
+  --cream-2:#efe7d4;
+  --wine:#722F37;
+  --wine-dark:#532026;
+  --ink:#2b2118;
+  --ink-soft:#5c5247;
+  --shadow:0 18px 50px -20px rgba(43,33,24,.45);
+  --shadow-sm:0 8px 24px -12px rgba(43,33,24,.4);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Lato',sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  overflow-x:hidden;
+  line-height:1.7;
+}
+body.no-scroll{overflow:hidden}
+h1,h2,h3,h4,h5{font-family:'Playfair Display',serif;line-height:1.15;color:var(--wine)}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.section{padding:110px 0;position:relative}
+.container{width:min(1240px,92%);margin:0 auto}
+.eyebrow{
+  font-family:'Dancing Script',cursive;
+  color:var(--terracotta);
+  font-size:1.6rem;
+  font-weight:700;
+  letter-spacing:.5px;
+  display:block;
+  margin-bottom:6px;
+}
+.section-title{
+  font-size:clamp(2rem,4.5vw,3.2rem);
+  font-weight:800;
+  margin-bottom:18px;
+  position:relative;
+}
+.section-title::after{
+  content:"";
+  display:block;
+  width:90px;height:4px;border-radius:4px;
+  background:linear-gradient(90deg,var(--terracotta),var(--gold));
+  margin-top:16px;
+}
+.center{text-align:center}
+.center .section-title::after{margin-left:auto;margin-right:auto}
+.section-lead{
+  max-width:680px;
+  color:var(--ink-soft);
+  font-size:1.08rem;
+  margin:0 auto 60px;
+}
+.center .section-lead{margin-left:auto;margin-right:auto}
+
+/* ====== LOADER ====== */
+#loader{
+  position:fixed;inset:0;z-index:9999;
+  background:linear-gradient(135deg,#3a1419,#722F37 60%,#a8412c);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#loader.hidden{opacity:0;visibility:hidden}
+.loader-mark{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,7vw,4.5rem);
+  color:var(--cream);
+  font-weight:800;
+  letter-spacing:2px;
+  position:relative;
+}
+.loader-mark span{color:var(--gold)}
+.loader-sub{
+  font-family:'Dancing Script',cursive;
+  color:var(--gold-light);
+  font-size:1.5rem;
+  margin-top:4px;
+}
+.loader-ring{
+  margin-top:30px;width:54px;height:54px;
+  border:3px solid rgba(247,243,233,.2);
+  border-top-color:var(--gold);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ====== NAVBAR ====== */
+.nav{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  transition:all .4s cubic-bezier(.2,.8,.2,1);
+  padding:22px 0;
+}
+.nav.scrolled{
+  background:rgba(247,243,233,.96);
+  box-shadow:0 6px 30px -10px rgba(43,33,24,.25);
+  padding:12px 0;
+  backdrop-filter:blur(8px);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.brand{
+  font-family:'Playfair Display',serif;
+  font-size:1.7rem;font-weight:800;color:var(--wine);
+  letter-spacing:1px;
+  display:flex;align-items:center;gap:10px;
+}
+.brand i{color:var(--terracotta);font-size:1.5rem}
+.brand span{color:var(--terracotta)}
+.nav.scrolled .brand{font-size:1.45rem}
+.nav-links{display:flex;gap:34px;align-items:center;list-style:none}
+.nav-links a{
+  font-weight:700;font-size:.95rem;letter-spacing:.6px;
+  text-transform:uppercase;color:var(--ink);
+  position:relative;padding:6px 0;
+  transition:color .3s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--terracotta);transition:width .3s ease;
+}
+.nav-links a:hover{color:var(--terracotta)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  background:linear-gradient(135deg,var(--terracotta),var(--wine));
+  color:#fff!important;padding:11px 22px;border-radius:50px;
+  font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-size:.82rem;
+  box-shadow:var(--shadow-sm);
+  transition:transform .3s,box-shadow .3s;
+}
+.nav-cta::after{display:none}
+.nav-cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px -8px rgba(114,47,55,.6)}
+.nav-toggle{display:none;font-size:1.5rem;color:var(--wine);cursor:pointer;background:none;border:none}
+
+/* ====== BUTTONS ====== */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 34px;border-radius:50px;
+  font-weight:700;letter-spacing:.6px;text-transform:uppercase;font-size:.85rem;
+  cursor:pointer;border:none;transition:all .35s cubic-bezier(.2,.8,.2,1);
+  position:relative;overflow:hidden;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--terracotta),var(--wine));
+  color:#fff;box-shadow:0 14px 34px -10px rgba(114,47,55,.6);
+}
+.btn-primary:hover{transform:translateY(-4px);box-shadow:0 22px 40px -12px rgba(114,47,55,.7)}
+.btn-ghost{
+  background:rgba(255,255,255,.12);
+  color:#fff;border:2px solid rgba(255,255,255,.7);
+  backdrop-filter:blur(4px);
+}
+.btn-ghost:hover{background:#fff;color:var(--wine);transform:translateY(-4px)}
+.btn-light{background:var(--cream);color:var(--wine);box-shadow:var(--shadow-sm)}
+.btn-light:hover{transform:translateY(-4px);background:#fff}
+
+/* ====== HERO ====== */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;
+  color:#fff;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:-2;
+  background:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+  transform:scale(1.05);
+  animation:heroZoom 18s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{to{transform:scale(1.18)}}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(120deg,rgba(43,16,20,.85) 0%,rgba(114,47,55,.7) 50%,rgba(168,65,44,.55) 100%);
+}
+.hero-content{max-width:760px;padding-top:60px}
+.hero .eyebrow{color:var(--gold-light);font-size:1.8rem}
+.hero h1{
+  font-size:clamp(3rem,8vw,6rem);
+  font-weight:900;color:#fff;
+  letter-spacing:1px;margin-bottom:8px;
+  text-shadow:0 8px 40px rgba(0,0,0,.4);
+}
+.hero h1 span{color:var(--gold-light)}
+.hero-slogan{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1.4rem,3vw,2rem);
+  color:var(--cream);margin-bottom:24px;font-weight:700;
+}
+.hero-desc{
+  font-size:1.15rem;color:rgba(255,255,255,.9);
+  margin-bottom:38px;max-width:560px;
+}
+.hero-btns{display:flex;gap:18px;flex-wrap:wrap}
+.hero-rating{
+  margin-top:42px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  background:rgba(255,255,255,.12);backdrop-filter:blur(10px);
+  padding:14px 24px;border-radius:50px;border:1px solid rgba(255,255,255,.2);
+  width:fit-content;
+}
+.hero-rating .stars{color:var(--gold-light);font-size:1rem;letter-spacing:2px}
+.hero-rating b{font-size:1.2rem;font-family:'Playfair Display',serif}
+.hero-rating small{color:rgba(255,255,255,.8)}
+.scroll-hint{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  color:#fff;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  opacity:.85;
+}
+.scroll-hint::after{
+  content:"";width:1px;height:46px;background:linear-gradient(#fff,transparent);
+  animation:scrollDown 1.8s ease-in-out infinite;
+}
+@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ====== MARQUEE STRIP ====== */
+.strip{
+  background:linear-gradient(135deg,var(--wine),var(--terracotta));
+  color:var(--cream);padding:18px 0;overflow:hidden;white-space:nowrap;
+}
+.strip-track{display:inline-flex;gap:50px;animation:marquee 28s linear infinite}
+.strip-track span{
+  font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;
+  display:inline-flex;align-items:center;gap:50px;
+}
+.strip-track span::after{content:"✦";color:var(--gold-light)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ====== ABOUT ====== */
+.about{background:var(--cream)}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+}
+.about-imgs{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.about-imgs img{
+  border-radius:18px;box-shadow:var(--shadow);width:100%;height:100%;object-fit:cover;
+  transition:transform .5s;
+}
+.about-imgs img:nth-child(1){grid-row:span 2;height:100%;min-height:340px}
+.about-imgs img:nth-child(2){height:230px}
+.about-imgs img:nth-child(3){height:230px}
+.about-imgs img:hover{transform:scale(1.04)}
+.about-badge{
+  position:absolute;bottom:-26px;right:-18px;z-index:3;
+  background:linear-gradient(135deg,var(--gold),var(--terracotta));
+  color:#fff;border-radius:18px;padding:22px 26px;text-align:center;
+  box-shadow:var(--shadow);
+}
+.about-badge b{font-family:'Playfair Display',serif;font-size:2.4rem;display:block;line-height:1}
+.about-badge small{font-size:.78rem;letter-spacing:1px;text-transform:uppercase}
+.about-text p{color:var(--ink-soft);margin-bottom:20px;font-size:1.05rem}
+.about-features{display:flex;gap:22px;flex-wrap:wrap;margin-top:26px}
+.about-features div{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--wine)}
+.about-features i{color:var(--terracotta);font-size:1.2rem}
+
+/* ====== INFO CARDS ====== */
+.info-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px;
+}
+.info-card{
+  background:#fff;border-radius:18px;padding:34px 28px;text-align:center;
+  box-shadow:var(--shadow-sm);border:1px solid #efe7d4;
+  transition:transform .4s,box-shadow .4s;
+}
+.info-card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.info-card .ic{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-light),var(--terracotta));
+  color:#fff;display:grid;place-items:center;font-size:1.5rem;margin:0 auto 18px;
+  box-shadow:var(--shadow-sm);
+}
+.info-card h4{font-size:1.3rem;margin-bottom:8px}
+.info-card p{color:var(--ink-soft);font-size:.98rem}
+.info-card a{color:var(--terracotta);font-weight:700}
+.info-card .socials{display:flex;gap:12px;justify-content:center;margin-top:14px}
+.info-card .socials a{
+  width:40px;height:40px;border-radius:50%;background:var(--cream-2);
+  display:grid;place-items:center;color:var(--wine);transition:.3s;
+}
+.info-card .socials a:hover{background:var(--terracotta);color:#fff;transform:translateY(-3px)}
+
+/* ====== ATMOSPHERE / FEATURES ====== */
+.atmos{background:linear-gradient(160deg,#f1ead8,#efe7d4);position:relative;overflow:hidden}
+.atmos::before{
+  content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,162,76,.25),transparent 70%);
+}
+.atmos-tags{
+  display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;justify-content:center;
+}
+.tag{
+  background:#fff;border:1px solid #e3d8bf;border-radius:50px;
+  padding:12px 22px;font-weight:700;font-size:.9rem;color:var(--wine);
+  display:inline-flex;align-items:center;gap:10px;
+  box-shadow:var(--shadow-sm);transition:.35s;
+}
+.tag i{color:var(--terracotta)}
+.tag:hover{background:var(--terracotta);color:#fff;border-color:var(--terracotta);transform:translateY(-4px)}
+.tag:hover i{color:#fff}
+
+.feat-row{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:60px;
+}
+.feat-card{
+  background:#fff;border-radius:16px;padding:30px 24px;text-align:center;
+  box-shadow:var(--shadow-sm);transition:.4s;border-top:4px solid var(--olive);
+}
+.feat-card:nth-child(2){border-color:var(--gold)}
+.feat-card:nth-child(3){border-color:var(--terracotta)}
+.feat-card:nth-child(4){border-color:var(--wine)}
+.feat-card i{font-size:1.9rem;color:var(--terracotta);margin-bottom:14px}
+.feat-card h4{font-size:1.15rem;margin-bottom:8px}
+.feat-card p{font-size:.9rem;color:var(--ink-soft)}
+
+/* ====== MENU ====== */
+.menu{background:var(--cream)}
+.menu-tabs{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:50px;
+}
+.tab-btn{
+  background:#fff;border:1px solid #e3d8bf;border-radius:50px;
+  padding:12px 24px;font-weight:700;color:var(--wine);cursor:pointer;
+  font-family:'Lato',sans-serif;font-size:.9rem;letter-spacing:.5px;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:8px;transition:.35s;box-shadow:var(--shadow-sm);
+}
+.tab-btn i{color:var(--terracotta)}
+.tab-btn.active,.tab-btn:hover{
+  background:linear-gradient(135deg,var(--terracotta),var(--wine));
+  color:#fff;border-color:transparent;transform:translateY(-3px);
+}
+.tab-btn.active i,.tab-btn:hover i{color:var(--gold-light)}
+
+.menu-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:30px;
+}
+.menu-item{
+  background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:var(--shadow-sm);border:1px solid #efe7d4;
+  display:flex;flex-direction:column;transition:transform .4s,box-shadow .4s;
+}
+.menu-item:hover{transform:translateY(-10px);box-shadow:var(--shadow)}
+.menu-item-img{
+  position:relative;height:230px;overflow:hidden;
+}
+.menu-item-img img{
+  width:100%;height:100%;object-fit:cover;transition:transform .6s;
+}
+.menu-item:hover .menu-item-img img{transform:scale(1.12)}
+.menu-item-img::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(43,16,20,.45),transparent 50%);
+}
+.menu-price-tag{
+  position:absolute;top:14px;right:14px;z-index:2;
+  background:linear-gradient(135deg,var(--gold),var(--terracotta));
+  color:#fff;font-weight:900;font-family:'Playfair Display',serif;
+  padding:8px 16px;border-radius:50px;font-size:1rem;
+  box-shadow:0 6px 18px -4px rgba(168,65,44,.6);
+}
+.menu-veg{
+  position:absolute;top:14px;left:14px;z-index:2;
+  background:rgba(122,132,80,.95);color:#fff;font-size:.7rem;
+  padding:4px 10px;border-radius:50px;font-weight:700;letter-spacing:.5px;
+  text-transform:uppercase;
+}
+.menu-item-body{padding:22px 24px 26px;flex:1;display:flex;flex-direction:column}
+.menu-item-body h4{
+  font-size:1.25rem;margin-bottom:6px;color:var(--wine);
+  display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+}
+.menu-item-body h4 .dot{flex:1;border-bottom:2px dotted #e3d8bf;margin:0 6px;transform:translateY(-4px)}
+.menu-item-body p{color:var(--ink-soft);font-size:.92rem;margin-bottom:14px;flex:1}
+.menu-item-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
+.menu-item-foot .ing{font-size:.78rem;color:var(--olive-dark);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.menu-item-foot .stars{color:var(--gold);font-size:.85rem}
+
+/* ====== GALLERY ====== */
+.gallery{background:linear-gradient(160deg,#efe7d4,#f1ead8)}
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  grid-auto-rows:200px;
+}
+.gallery-grid .g{
+  overflow:hidden;border-radius:14px;position:relative;box-shadow:var(--shadow-sm);
+}
+.gallery-grid .g img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gallery-grid .g:hover img{transform:scale(1.12)}
+.gallery-grid .g::after{
+  content:"";position:absolute;inset:0;background:rgba(114,47,55,0);
+  transition:background .4s;
+}
+.gallery-grid .g:hover::after{background:rgba(114,47,55,.35)}
+.g.tall{grid-row:span 2}
+.g.wide{grid-column:span 2}
+
+/* ====== TESTIMONIAL ====== */
+.testi{background:linear-gradient(135deg,var(--wine-dark),var(--wine));color:#fff;position:relative;overflow:hidden}
+.testi::before{
+  content:"";position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=2000&q=80') center/cover;
+  opacity:.12;
+}
+.testi .section-title{color:#fff}
+.testi .eyebrow{color:var(--gold-light)}
+.testi .section-title::after{background:linear-gradient(90deg,var(--gold-light),var(--terracotta))}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;position:relative}
+.testi-card{
+  background:rgba(255,255,255,.08);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:32px 28px;
+  transition:transform .4s;
+}
+.testi-card:hover{transform:translateY(-8px);background:rgba(255,255,255,.12)}
+.testi-card .stars{color:var(--gold-light);font-size:1rem;letter-spacing:2px;margin-bottom:14px}
+.testi-card p{font-style:italic;font-size:1rem;color:rgba(255,255,255,.92);margin-bottom:20px}
+.testi-card .who{display:flex;align-items:center;gap:12px}
+.testi-card .who img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--gold-light)}
+.testi-card .who b{display:block;font-family:'Playfair Display',serif;font-size:1.05rem}
+.testi-card .who small{color:rgba(255,255,255,.7)}
+
+/* ====== RESERVATION ====== */
+.reserve{
+  background:linear-gradient(160deg,#f1ead8,#efe7d4);
+}
+.reserve-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
+  background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);
+}
+.reserve-img{
+  height:100%;min-height:480px;
+  background:url('https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1400&q=80') center/cover;
+}
+.reserve-form{padding:48px 44px}
+.reserve-form h3{font-size:2rem;margin-bottom:6px}
+.reserve-form .eyebrow{margin-bottom:6px}
+.reserve-form p{color:var(--ink-soft);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:700;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;color:var(--wine)}
+.field input,.field select,.field textarea{
+  padding:13px 16px;border:1.5px solid #e3d8bf;border-radius:10px;font-family:'Lato',sans-serif;
+  font-size:.95rem;background:var(--cream);color:var(--ink);transition:.3s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--terracotta);background:#fff;box-shadow:0 0 0 4px rgba(200,85,61,.1);
+}
+.field textarea{resize:vertical;min-height:80px}
+.reserve-form .btn{width:100%;justify-content:center;margin-top:8px}
+
+/* ====== MAP & CONTACT ====== */
+.contact{background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-card{
+  display:flex;gap:18px;align-items:flex-start;background:#fff;padding:24px;border-radius:16px;
+  box-shadow:var(--shadow-sm);border-left:5px solid var(--terracotta);transition:.3s;
+}
+.contact-card:hover{transform:translateX(6px)}
+.contact-card .ic{
+  width:50px;height:50px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--gold-light),var(--terracotta));
+  color:#fff;display:grid;place-items:center;font-size:1.2rem;
+}
+.contact-card h4{font-size:1.1rem;margin-bottom:4px}
+.contact-card p{color:var(--ink-soft);font-size:.95rem}
+.contact-card a{color:var(--terracotta);font-weight:700}
+.map-wrap{
+  border-radius:18px;overflow:hidden;box-shadow:var(--shadow);min-height:420px;
+  border:6px solid #fff;
+}
+.map-wrap iframe{width:100%;height:100%;min-height:420px;border:0;display:block}
+
+/* ====== FOOTER ====== */
+.footer{
+  background:linear-gradient(135deg,#2b1618,#532026);color:rgba(247,243,233,.85);
+  padding:70px 0 0;
+}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:50px}
+.footer h5{color:var(--gold-light);font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:20px}
+.footer .brand{color:#fff;margin-bottom:18px}
+.footer p{font-size:.92rem;margin-bottom:14px}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:10px;font-size:.92rem}
+.footer ul li a{transition:.3s}
+.footer ul li a:hover{color:var(--gold-light);padding-left:6px}
+.footer ul li i{color:var(--terracotta);width:18px;margin-right:6px}
+.foot-social{display:flex;gap:12px;margin-top:16px}
+.foot-social a{
+  width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);
+  display:grid;place-items:center;color:#fff;transition:.3s;
+}
+.foot-social a:hover{background:var(--terracotta);transform:translateY(-4px)}
+.foot-news{display:flex;gap:8px;margin-top:14px}
+.foot-news input{
+  flex:1;padding:12px 16px;border-radius:50px;border:none;background:rgba(255,255,255,.1);
+  color:#fff;font-family:'Lato',sans-serif;
+}
+.foot-news input::placeholder{color:rgba(255,255,255,.6)}
+.foot-news input:focus{outline:none;background:rgba(255,255,255,.18)}
+.foot-news button{
+  background:var(--terracotta);color:#fff;border:none;width:46px;border-radius:50%;cursor:pointer;font-size:1rem;transition:.3s;
+}
+.foot-news button:hover{background:var(--gold);transform:scale(1.08)}
+.foot-bottom{
+  border-top:1px solid rgba(255,255,255,.1);padding:22px 0;text-align:center;
+  font-size:.85rem;color:rgba(247,243,233,.6);
+}
+.foot-bottom b{color:var(--gold-light);font-family:'Playfair Display',serif}
+
+/* ====== BACK TO TOP ====== */
+.to-top{
+  position:fixed;bottom:30px;right:30px;z-index:900;
+  width:50px;height:50px;border-radius:50%;
+  background:linear-gradient(135deg,var(--terracotta),var(--wine));
+  color:#fff;border:none;font-size:1.1rem;cursor:pointer;
+  box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(20px);
+  transition:.4s;
+}
+.to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.to-top:hover{transform:translateY(-4px) scale(1.05)}
+
+/* ====== RESPONSIVE ====== */
+@media(max-width:980px){
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .feat-row{grid-template-columns:repeat(2,1fr)}
+  .info-grid{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .nav-links{
+    position:fixed;top:0;right:-100%;height:100vh;width:75%;max-width:340px;
+    background:var(--cream);flex-direction:column;justify-content:center;
+    gap:30px;box-shadow:-10px 0 40px rgba(0,0,0,.2);transition:right .4s ease;z-index:1001;
+  }
+  .nav-links.open{right:0}
+  .nav-toggle{display:block;z-index:1002}
+  .nav-toggle.open{color:var(--wine)}
+}
+@media(max-width:680px){
+  .section{padding:80px 0}
+  .menu-grid,.feat-row,.gallery-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-auto-rows:200px}
+  .g.wide{grid-column:span 1}
+  .footer-grid{grid-template-columns:1fr}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hero-btns .btn{justify-content:center}
+  .about-imgs{grid-template-columns:1fr}
+  .about-imgs img:nth-child(1){grid-row:auto;min-height:240px}
+  .about-badge{right:0;bottom:-20px}
+}
+
+/* reveal animation helper */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body class="no-scroll">
+
+<!-- ===== LOADER ===== -->
+<div id="loader">
+  <div class="loader-mark">Dei <span>Frati</span></div>
+  <div class="loader-sub">Trattoria · Brașov</div>
+  <div class="loader-ring"></div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#hero" class="brand"><i class="fa-solid fa-wheat-awn"></i>Dei <span>Frati</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Acasă</a></li>
+      <li><a href="#about">Despre</a></li>
+      <li><a href="#atmos">Atmosferă</a></li>
+      <li><a href="#menu">Meniu</a></li>
+      <li><a href="#gallery">Galerie</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#booking" class="nav-cta">Rezervă</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Meniu"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow" data-aos="fade-up">Benvenuti a Brașov</span>
+      <h1 data-aos="fade-up" data-aos-delay="100">Dei <span>Frati</span></h1>
+      <p class="hero-slogan" data-aos="fade-up" data-aos-delay="200">Gătim și servim în familie, mănânci, bei și te simți ca acasă!!</p>
+      <p class="hero-desc" data-aos="fade-up" data-aos-delay="300">Popular place offering elevated Italian cuisine &amp; wine in snug, relaxed surrounds.</p>
+      <div class="hero-btns" data-aos="fade-up" data-aos-delay="400">
+        <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-utensils"></i> View Menu</a>
+        <a href="#booking" class="btn btn-ghost"><i class="fa-regular fa-calendar"></i> Book a Table</a>
+      </div>
+      <div class="hero-rating" data-aos="fade-up" data-aos-delay="500">
+        <span class="stars">★★★★★</span>
+        <b>4.8</b>
+        <small>· 5,648 Reviews on Google</small>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<!-- ===== MARQUEE STRIP ===== -->
+<div class="strip">
+  <div class="strip-track">
+    <span>Pasta fatta in casa</span><span>Vinuri alese</span><span>Bucătărie toscană</span><span>Familie &amp; Passione</span><span>Cucina italiana</span><span>Dolci fatti in casa</span>
+    <span>Pasta fatta in casa</span><span>Vinuri alese</span><span>Bucătărie toscană</span><span>Familie &amp; Passione</span><span>Cucina italiana</span><span>Dolci fatti in casa</span>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-imgs" data-aos="fade-right">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Interior Dei Frati">
+        <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=600&q=80" alt="Bucătar preparând pasta">
+        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt="Vin roșu italian">
+        <div class="about-badge">
+          <b>4.8★</b>
+          <small>5,648 Reviews</small>
+        </div>
+      </div>
+      <div class="about-text" data-aos="fade-left">
+        <span class="eyebrow">La nostra storia</span>
+        <h2 class="section-title">O familie. O pasiune. O masă ca acasă.</h2>
+        <p>La <b>Dei Frati</b> nu doar gătim mâncare italiană — trăim-o. Fiecare farfurie poartă cu ea căldura unei cine de familie, mirosul de busuioc proaspăt și zâmbetul celor care îți sunt alături. Fie că vii pentru o prânz rapid, o cină romantică sau o seară lungă cu prietenii, la noi te simți ca acasă.</p>
+        <p>Locația noastră din inima Brașovului — Piața George Enescu Nr.16, în Hotel Casa Wagner — te întâmpină cu atmosferă istorică, intimă și plină de caracter. Gătim și servim în familie, iar tu mănânci, bei și te simți ca acasă.</p>
+        <div class="about-features">
+          <div><i class="fa-solid fa-leaf"></i> Vegan &amp; Vegetarian</div>
+          <div><i class="fa-solid fa-dog"></i> Dogs Allowed</div>
+          <div><i class="fa-solid fa-children"></i> Good for Kids</div>
+          <div><i class="fa-solid fa-utensils"></i> Table Service</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- info cards -->
+    <div class="info-grid">
+      <div class="info-card" data-aos="fade-up">
+        <div class="ic"><i class="fa-solid fa-location-dot"></i></div>
+        <h4>Locație</h4>
+        <p>Piața George Enescu Nr16, 500031 Brașov<br>În: Hotel Casa Wagner Brașov</p>
+      </div>
+      <div class="info-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="ic"><i class="fa-solid fa-phone"></i></div>
+        <h4>Contact</h4>
+        <p><a href="tel:+40724216028">+40 724 216 028</a><br><a href="mailto:deifratibv@gmail.com">deifratibv@gmail.com</a></p>
+      </div>
+      <div class="info-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="ic"><i class="fa-solid fa-share-nodes"></i></div>
+        <h4>Urmărește-ne</h4>
+        <p>★★★★★ 100% recomandat · 1,395 Reviews pe Facebook</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ATMOSPHERE / FEATURES ===== -->
+<section class="section atmos" id="atmos">
+  <div class="container">
+    <div class="center" data-aos="fade-up">
+      <span class="eyebrow">Atmosfera &amp; Experiența</span>
+      <h2 class="section-title">Un loc unde te simți ca acasă</h2>
+      <p class="section-lead">Casual și istoric, romantic și upmarket, cosy și quiet, trendy și cald — totul într-un singur loc. Made for groups, tourists, and anyone who loves real Italian food.</p>
+    </div>
+
+    <div class="atmos-tags" data-aos="fade-up">
+      <span class="tag"><i class="fa-solid fa-mug-saucer"></i> Great coffee</span>
+      <span class="tag"><i class="fa-solid fa-beer-mug-empty"></i> Great beer selection</span>
+      <span class="tag"><i class="fa-solid fa-mug-hot"></i> Great tea selection</span>
+      <span class="tag"><i class="fa-solid fa-martini-glass-citrus"></i> Great cocktails</span>
+      <span class="tag"><i class="fa-solid fa-ice-cream"></i> Great dessert</span>
+      <span class="tag"><i class="fa-solid fa-wine-glass"></i> Great wine list</span>
+      <span class="tag"><i class="fa-solid fa-leaf"></i> Vegan options</span>
+      <span class="tag"><i class="fa-solid fa-carrot"></i> Vegetarian options</span>
+      <span class="tag"><i class="fa-solid fa-moon"></i> Late-night food</span>
+      <span class="tag"><i class="fa-solid fa-cheese"></i> Small plates</span>
+      <span class="tag"><i class="fa-solid fa-bottle-water"></i> Spirits</span>
+      <span class="tag"><i class="fa-solid fa-mug-saucer"></i> Quick bite</span>
+    </div>
+
+    <div class="feat-row">
+      <div class="feat-card" data-aos="fade-up">
+        <i class="fa-solid fa-utensils"></i>
+        <h4>Dine-in &amp; Outdoor</h4>
+        <p>Outdoor seating, dine-in, delivery, takeaway, on-site services &amp; curbside pickup.</p>
+      </div>
+      <div class="feat-card" data-aos="fade-up" data-aos-delay="100">
+        <i class="fa-solid fa-clock"></i>
+        <h4>Dining Options</h4>
+        <p>Brunch, Lunch, Dinner, Dessert, Seating &amp; Table service. Opens at 12 PM.</p>
+      </div>
+      <div class="feat-card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fa-solid fa-wheelchair"></i>
+        <h4>Accessibility</h4>
+        <p>Wheelchair-accessible seating &amp; entrance. (No wheelchair-accessible car park.)</p>
+      </div>
+      <div class="feat-card" data-aos="fade-up" data-aos-delay="300">
+        <i class="fa-solid fa-credit-card"></i>
+        <h4>Planning &amp; Payments</h4>
+        <p>Reservations recommended. Credit cards, Debit cards, NFC mobile payments accepted. Paid street parking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MENU ===== -->
+<section class="section menu" id="menu">
+  <div class="container">
+    <div class="center" data-aos="fade-up">
+      <span class="eyebrow">Il Menù</span>
+      <h2 class="section-title">Bucătăria Noastră Italiană</h2>
+      <p class="section-lead">De la antipasti proaspete la paste făcute în casă, de la pizza din cuptor cu lemne la dolci clasice — fiecare preparat este gătit cu ingrediente autentice și multă dragoste.</p>
+    </div>
+
+    <div class="menu-tabs" data-aos="fade-up">
+      <button class="tab-btn active" data-cat="all"><i class="fa-solid fa-bowl-food"></i> Tot</button>
+      <button class="tab-btn" data-cat="antipasti"><i class="fa-solid fa-cheese"></i> Antipasti</button>
+      <button class="tab-btn" data-cat="paste"><i class="fa-solid fa-wheat-awn"></i> Paste</button>
+      <button class="tab-btn" data-cat="pizza"><i class="fa-solid fa-pizza-slice"></i> Pizza</button>
+      <button class="tab-btn" data-cat="carne"><i class="fa-solid fa-drumstick-bite"></i> Carne &amp; Pește</button>
+      <button class="tab-btn" data-cat="dolci"><i class="fa-solid fa-ice-cream"></i> Dolci</button>
+      <button class="tab-btn" data-cat="bevande"><i class="fa-solid fa-wine-glass"></i> Bevande</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid" data-aos="fade-up">
+      <!-- items injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="section gallery" id="gallery">
+  <div class="container">
+    <div class="center" data-aos="fade-up">
+      <span class="eyebrow">Galleria</span>
+      <h2 class="section-title">Momente la Dei Frati</h2>
+      <p class="section-lead">O privire în farfurii, în pahare și în atmosfera caldă a casei noastre.</p>
+    </div>
+    <div class="gallery-grid" data-aos="fade-up">
+      <div class="g tall"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80" alt=""></div>
+      <div class="g wide"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=1000&q=80" alt=""></div>
+      <div class="g"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80" alt=""></div>
+      <div class="g"><img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?auto=format&fit=crop&w=600&q=80" alt=""></div>
+      <div class="g wide"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=80" alt=""></div>
+      <div class="g tall"><img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?auto=format&fit=crop&w=800&q=80" alt=""></div>
+      <div class="g"><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt=""></div>
+      <div class="g"><img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=600&q=80" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIAL ===== -->
+<section class="section testi">
+  <div class="container center" data-aos="fade-up">
+    <span class="eyebrow" style="color:var(--gold-light)">Recenzii</span>
+    <h2 class="section-title" style="color:#fff">Ce spun oaspeții noștri</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:40px" id="testiGrid">
+      <div style="background:rgba(255,255,255,.08);padding:30px;border-radius:16px;text-align:left;backdrop-filter:blur(6px)">
+        <div style="color:var(--gold-light);font-size:1rem;margin-bottom:12px">★★★★★</div>
+        <p style="font-style:italic;margin-bottom:18px">"Cea mai bună pastă pe care am mâncat-o vreodată în România! Atmosfera e caldă, personalul e ca o familie. M-am simțit ca în Italia."</p>
+        <b style="color:var(--gold-light)">— Andreea M.</b>
+      </div>
+      <div style="background:rgba(255,255,255,.08);padding:30px;border-radius:16px;text-align:left;backdrop-filter:blur(6px)">
+        <div style="color:var(--gold-light);font-size:1rem;margin-bottom:12px">★★★★★</div>
+        <p style="font-style:italic;margin-bottom:18px">"Pizza din cuptor cu lemne e divină, vinul ales perfect. Am venit pentru o cină romantică și am plecat cu un zâmbet uriaș. Recomand 100%!"</p>
+        <b style="color:var(--gold-light)">— Marco &amp; Elena</b>
+      </div>
+      <div style="background:rgba(255,255,255,.08);padding:30px;border-radius:16px;text-align:left;backdrop-filter:blur(6px)">
+        <div style="color:var(--gold-light);font-size:1rem;margin-bottom:12px">★★★★★</div>
+        <p style="font-style:italic;margin-bottom:18px">"Tiramisu-ul e făcut în casă și e pur și simplu incredibil. Locul e cosy, istoric, perfect pentru o seară cu prietenii. Dogs allowed — am venit cu câinele!"</p>
+        <b style="color:var(--gold-light)">— Radu P.</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOKING ===== -->
+<section class="section" id="booking" style="background:linear-gradient(160deg,#efe7d4,#f1ead8)">
+  <div class="container">
+    <div class="center" data-aos="fade-up">
+      <span class="eyebrow">Prenotazione</span>
+      <h2 class="section-title">Rezervă o Masă</h2>
+      <p class="section-lead">Rezervările sunt recomandate pentru brunch, prânz și cină. De obicei există așteptare, deci ne bucurăm să te primim pregătiți.</p>
+    </div>
+    <form class="menu-tabs" style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:880px;margin:0 auto;background:#fff;padding:40px;border-radius:18px;box-shadow:var(--shadow)" data-aos="fade-up" onsubmit="return bookTable(event)">
+      <div style="grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div>
+          <label style="font-weight:700;color:var(--wine);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px">Nume</label>
+          <input required type="text" placeholder="Numele tău" style="width:100%;padding:14px 16px;margin-top:8px;border:1px solid #e3d8bf;border-radius:10px;font-family:'Lato',sans-serif;font-size:1rem">
+        </div>
+        <div>
+          <label style="font-weight:700;color:var(--wine);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px">Telefon</label>
+          <input required type="tel" placeholder="+40 ..." style="width:100%;padding:14px 16px;margin-top:8px;border:1px solid #e3d8bf;border-radius:10px;font-family:'Lato',sans-serif;font-size:1rem">
+        </div>
+      </div>
+      <div>
+        <label style="font-weight:700;color:var(--wine);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px">Data</label>
+        <input required type="date" style="width:100%;padding:14px 16px;margin-top:8px;border:1px solid #e3d8bf;border-radius:10px;font-family:'Lato',sans-serif;font-size:1rem">
+      </div>
+      <div>
+        <label style="font-weight:700;color:var(--wine);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px">Ora</label>
+        <input required type="time" min="12:00" value="19:00" style="width:100%;padding:14px 16px;margin-top:8px;border:1px solid #e3d8bf;border-radius:10px;font-family:'Lato',sans-serif;font-size:1rem">
+      </div>
+      <div>
+        <label style="font-weight:700;color:var(--wine);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px">Persoane</label>
+        <select style="width:100%;padding:14px 16px;margin-top:8px;border:1px solid #e3d8bf;border-radius:10px;font-family:'Lato',sans-serif;font-size:1rem;background:#fff">
+          <option>1 persoană</option><option selected>2 persoane</option><option>3 persoane</option><option>4 persoane</option><option>5 persoane</option><option>6+ persoane</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-weight:700;color:var(--wine);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px">Ocazie</label>
+        <select style="width:100%;padding:14px 16px;margin-top:8px;border:1px solid #e3d8bf;border-radius:10px;font-family:'Lato',sans-serif;font-size:1rem;background:#fff">
+          <option>Cină obișnuită</option><option>Brunch</option><option>Prânz</option><option>Aniversară</option><option>Romantică</option><option>Grup / Prieteni</option>
+        </select>
+      </div>
+      <div style="grid-column:span 2">
+        <label style="font-weight:700;color:var(--wine);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px">Mesaj (opțional)</label>
+        <textarea placeholder="Cerințe speciale, alergii, masă outdoor..." style="width:100%;padding:14px 16px;margin-top:8px;border:1px solid #e3d8bf;border-radius:10px;font-family:'Lato',sans-serif;font-size:1rem;min-height:80px;resize:vertical"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="grid-column:span 2;justify-content:center"><i class="fa-regular fa-calendar-check"></i> Confirmă Rezervarea</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== CONTACT / MAP ===== -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="center" data-aos="fade-up">
+      <span class="eyebrow">Vieni a trovarci</span>
+      <h2 class="section-title">Ne găsești în inima Brașovului</h2>
+    </div>
+    <div class="contact-grid" style="margin-top:50px">
+      <div class="contact-info" data-aos="fade-right">
+        <div class="contact-card">
+          <div class="ic"><i class="fa-solid fa-location-dot"></i></div>
+          <div><h4>Adresă</h4><p>Piața George Enescu Nr16, 500031 Brașov, România<br>În: Hotel Casa Wagner Brașov</p></div>
+        </div>
+        <div class="contact-card">
+          <div class="ic"><i class="fa-solid fa-phone"></i></div>
+          <div><h4>Telefon</h4><p><a href="tel:+40724216028">+40 724 216 028</a></p></div>
+        </div>
+        <div class="contact-card">
+          <div class="ic"><i class="fa-solid fa-envelope"></i></div>
+          <div><h4>Email</h4><p><a href="mailto:deifratibv@gmail.com">deifratibv@gmail.com</a></p></div>
+        </div>
+        <div class="contact-card">
+          <div class="ic"><i class="fa-solid fa-clock"></i></div>
+          <div><h4>Program</h4><p>Deschide la ora <b>12:00 PM</b> zilnic<br>Price range: lei 60–140 ($)</p></div>
+        </div>
+        <div class="contact-card">
+          <div class="ic"><i class="fa-solid fa-star"></i></div>
+          <div><h4>Recenzii</h4><p>Google: 4.8★ (5,648 reviews)<br>Facebook: 100% recomandat (1,395 reviews)</p></div>
+        </div>
+      </div>
+      <div class="map-wrap" data-aos="fade-left">
+        <iframe src="https://www.google.com/maps?q=Piața+George+Enescu+16+Brașov+Romania&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand"><i class="fa-solid fa-wheat-awn" style="color:var(--gold-light)"></i>Dei Frati</div>
+        <p style="font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--gold-light);margin-bottom:14px">Gătim și servim în familie!</p>
+        <p>Elevated Italian cuisine &amp; wine in snug, relaxed surrounds. Brașov, România.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+      <div>
+        <h5>Linkuri</h5>
+        <ul>
+          <li><a href="#hero"><i class="fa-solid fa-angle-right"></i> Acasă</a></li>
+          <li><a href="#about"><i class="fa-solid fa-angle-right"></i> Despre Noi</a></li>
+          <li><a href="#menu"><i class="fa-solid fa-angle-right"></i> Meniu</a></li>
+          <li><a href="#gallery"><i class="fa-solid fa-angle-right"></i> Galerie</a></li>
+          <li><a href="#booking"><i class="fa-solid fa-angle-right"></i> Rezervări</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Informații</h5>
+        <ul>
+          <li><i class="fa-solid fa-clock"></i> Deschide 12 PM</li>
+          <li><i class="fa-solid fa-money-bill"></i> lei 60–140</li>
+          <li><i class="fa-solid fa-paw"></i> Dogs allowed</li>
+          <li><i class="fa-solid fa-wheelchair"></i> Accessibil</li>
+          <li><i class="fa-solid fa-credit-card"></i> Card / NFC</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Newsletter</h5>
+        <p>Abonează-te pentru evenimente &amp; oferte speciale.</p>
+        <form class="foot-news" onsubmit="return subscribe(event)">
+          <input type="email" placeholder="Email-ul tău" required>
+          <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+        <p style="margin-top:18px"><i class="fa-solid fa-location-dot" style="color:var(--terracotta)"></i> Piața George Enescu 16, Brașov</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    © <span id="year"></span> <b>Dei Frati</b> · Trattoria Italiană · Made with <i class="fa-solid fa-heart" style="color:var(--terracotta)"></i> in Brașov
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Înapoi sus"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- ===== AOS ===== -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+/* ===== MENU DATA — every item has an image ===== */
+const MENU = [
+  // ANTIPASTI
+  {cat:'antipasti', name:'Bruschetta Classica', desc:'Pâine grill cu roșii, busuioc, usturoi &amp; ulei de măsline extravirgin.', price:'32 lei', img:'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Vegetarian', stars:5},
+  {cat:'antipasti', name:'Tagliere di Salumi', desc:'Selectie de prosciutto, salame, coppa &amp; brânzeturi cu miere și fructe.', price:'68 lei', img:'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Per 2 persoane', stars:5},
+  {cat:'antipasti', name:'Caprese di Bufala', desc:'Mozzarella di bufala, roșii heirloom, busuioc &amp; pesto genovese.', price:'46 lei', img:'https://images.unsplash.com/photo-1592417817089-1c0b1c0b1c0b?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Vegetarian', stars:5},
+  {cat:'antipasti', name:'Carpaccio di Manzo', desc:'Feliere subțiri de vită, rucola, parmezan, lămâie &amp; ulei de măsline.', price:'58 lei', img:'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Raw', stars:5},
+  {cat:'antipasti', name:'Calamari Fritti', desc:'Calamari prăjiți crocant cu aioli &amp; lămâie.', price:'54 lei', img:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Frutti di mare', stars:4},
+  {cat:'antipasti', name:'Antipasto Misto', desc:'Selecție de antipasti calzi &amp; reci pentru 2 persoane.', price:'72 lei', img:'https://images.unsplash.com/photo-1505253758473-96b7015fcd40?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Per 2 persoane', stars:5},
+
+  // PASTE
+  {cat:'paste', name:'Spaghetti Carbonara', desc:'Guanciale, gălbenuș, pecorino &amp; piper proaspăt. Stil roman autentic.', price:'52 lei', img:'https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Fatta in casa', stars:5},
+  {cat:'paste', name:'Tagliatelle al Ragù', desc:'Tagliatelle făcute în casă cu ragù lent de vită 6 ore.', price:'56 lei', img:'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Bolognese', stars:5},
+  {cat:'paste', name:'Cacio e Pepe', desc:'Tonnarelli, pecorino romano &amp; piper negru — simplitate perfectă.', price:'48 lei', img:'https://images.unsplash.com/photo-1572417051265-1c92da4a1c0d?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Vegetarian', stars:5},
+  {cat:'paste', name:'Penne all\'Arrabbiata', desc:'Sos de roșii picant cu usturoi &amp; chili.', price:'44 lei', img:'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Vegan option', stars:4},
+  {cat:'paste', name:'Lasagna alla Bolognese', desc:'Straturi de pastă, ragù, besciamella &amp; parmezan la cuptor.', price:'58 lei', img:'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Cuptor', stars:5},
+  {cat:'paste', name:'Ravioli di Ricotta e Spinaci', desc:'Ravioli cu ricotta &amp; spanac, unt &amp; salvie, parmezan.', price:'54 lei', img:'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Vegetarian', stars:5},
+  {cat:'paste', name:'Gnocchi al Pomodoro', desc:'Gnocchi de cartofi moi în sos de roșii &amp; busuioc.', price:'46 lei', img:'https://images.unsplash.com/photo-1632081035651-2f1e1c1c1c1c?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Vegetarian', stars:4},
+  {cat:'paste', name:'Linguine ai Frutti di Mare', desc:'Linguine cu midii, creveți &amp; calamar în sos de roșii.', price:'72 lei', img:'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Frutti di mare', stars:5},
+
+  // PIZZA
+  {cat:'pizza', name:'Margherita D.O.P.', desc:'Sos de roșii, mozzarella fior di latte, busuioc proaspăt.', price:'48 lei', img:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Cuptor cu lemne', stars:5},
+  {cat:'pizza', name:'Diavola', desc:'Salame picantă, mozzarella, roșii &amp; chili.', price:'56 lei', img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Picantă', stars:5},
+  {cat:'pizza', name:'Quattro Formaggi', desc:'Mozzarella, gorgonzola, fontina &amp; parmezan.', price:'62 lei', img:'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Vegetarian', stars:5},
+  {cat:'pizza', name:'Prosciutto e Funghi', desc:'Prosciutto cotto, ciuperci, mozzarella &amp; roșii.', price:'58 lei', img:'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Classica', stars:4},
+  {cat:'pizza', name:'Quattro Stagioni', desc:'Artichecks, ciuperci, prosciutto &amp; măsline — cele 4 anotimpuri.', price:'60 lei', img:'https://images.unsplash.com/photo-1571066811602-716837d681de?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Classica', stars:5},
+  {cat:'pizza', name:'Capricciosa', desc:'Ciuperci, artichecks, prosciutto, măsline &amp; ou.', price:'58 lei', img:'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Cuptor cu lemne', stars:5},
+  {cat:'pizza', name:'Pizza Vegetariana', desc:'Vinătă, ardei, ceapă roșie, ciuperci, măsline &amp; mozzarella.', price:'52 lei', img:'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Vegetariană', stars:5},
+
+  // CARNE & PESCE
+  {cat:'carne', name:'Saltimbocca alla Romana', desc:'Vită cu prosciutto &amp; salvie în sos de vin alb.', price:'72 lei', img:'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Specialità', stars:5},
+  {cat:'carne', name:'Bistecca alla Fiorentina', desc:'T-bone la grătar cu rozmarin &amp; ulei de măsline (1kg).', price:'140 lei', img:'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Per 2 persoane', stars:5},
+  {cat:'carne', name:'Pollo al Limone', desc:'Piept de pui la grătar cu lămâie &amp; rozmarin.', price:'56 lei', img:'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Grătar', stars:4},
+  {cat:'carne', name:'Ossobuco alla Milanese', desc:'Curcan slow-cooked cu rizoto safran &amp; gremolata.', price:'88 lei', img:'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Slow-cooked', stars:5},
+  {cat:'carne', name:'Salmone alla Griglia', desc:'File de somon la grătar cu legume &amp; lămâie.', price:'84 lei', img:'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Pesce', stars:5},
+  {cat:'carne', name:'Gamberoni al Vino Bianco', desc:'Creveți mari în vin alb, usturoi &amp; pătrunjel.', price:'92 lei', img:'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=600&q=80', veg:false, ing:'Pesce', stars:5},
+
+  // DOLCI
+  {cat:'dolci', name:'Tiramisù della Casa', desc:'Mascarpone, espresso, savoiardi &amp; cacao. Fatto in casa.', price:'32 lei', img:'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Fatto in casa', stars:5},
+  {cat:'dolci', name:'Panna Cotta ai Frutti', desc:'Panna cotta cremoasă cu coulis de fructe de pădure.', price:'28 lei', img:'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Vegetarian', stars:5},
+  {cat:'dolci', name:'Cannoli Siciliani', desc:'Tuburi crocante cu ricotta, pistachio &amp; ciocolată.', price:'30 lei', img:'https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Siciliani', stars:5},
+  {cat:'dolci', name:'Gelato Artigianale', desc:'Trei cupe de înghețată artizanală (fistic, ciocolată, vanilie).', price:'26 lei', img:'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Artigianale', stars:5},
+  {cat:'dolci', name:'Tortino al Cioccolato', desc:'Tort cald cu ciocolată &amp; miez lichid, înghețată vanilie.', price:'34 lei', img:'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Caldo', stars:5},
+  {cat:'dolci', name:'Cassata Siciliana', desc:'Pan di Spagna, ricotta, marțipan &amp; fructe confiate.', price:'32 lei', img:'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Siciliana', stars:4},
+
+  // BEVANDE
+  {cat:'bevande', name:'Espresso', desc:'Shot de cafea italiană proaspăt râșnită.', price:'12 lei', img:'https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Great coffee', stars:5},
+  {cat:'bevande', name:'Cappuccino', desc:'Espresso &amp; lapte spumat cremos.', price:'16 lei', img:'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Great coffee', stars:5},
+  {cat:'bevande', name:'Vino Rosso — Chianti', desc:'Pahar Chianti DOCG, Toscana.', price:'28 lei', img:'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Great wine list', stars:5},
+  {cat:'bevande', name:'Vino Bianco — Pinot Grigio', desc:'Pahar Pinot Grigio, Veneto.', price:'26 lei', img:'https://images.unsplash.com/photo-1566995541428-f2c5bb2cd6c3?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Great wine list', stars:5},
+  {cat:'bevande', name:'Aperol Spritz', desc:'Aperol, prosecco &amp; sifon cu portocală.', price:'30 lei', img:'https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Great cocktails', stars:5},
+  {cat:'bevande', name:'Negroni', desc:'Gin, Campari &amp; vermut rosso — clasic italian.', price:'34 lei', img:'https://images.unsplash.com/photo-1584788953160-4c4e0f7a3f3a?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Great cocktails', stars:5},
+  {cat:'bevande', name:'Birra Artigianale', desc:'Beră artizanală locală la draft.', price:'22 lei', img:'https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Great beer', stars:4},
+  {cat:'bevande', name:'Limonata Siciliana', desc:'Lămâie siciliană, mentă &amp; apă rece.', price:'14 lei', img:'https://images.unsplash.com/photo-1437418747212-8d9709afab22?auto=format&fit=crop&w=600&q=80', veg:true, ing:'Răcoritoare', stars:4},
+];
+
+/* render menu */
+const grid = document.getElementById('menuGrid');
+function renderMenu(cat){
+  const items = cat==='all' ? MENU : MENU.filter(m=>m.cat===cat);
+  grid.innerHTML = items.map((m,i)=>`
+    <article class="menu-item" data-aos="fade-up" data-aos-delay="${(i%3)*80}">
+      <div class="menu-item-img">
+        <img src="${m.img}" alt="${m.name}" loading="lazy">
+        ${m.veg ? '<span class="menu-veg">Veg</span>':''}
+        <span class="menu-price-tag">${m.price}</span>
+      </div>
+      <div class="menu-item-body">
+        <h4>${m.name}<span class="dot"></span></h4>
+        <p>${m.desc}</p>
+        <div class="menu-item-foot">
+          <span class="ing"><i class="fa-solid fa-tag"></i> ${m.ing}</span>
+          <span class="stars">${'★'.repeat(m.stars)}${'☆'.repeat(5-m.stars)}</span>
+        </div>
+      </div>
+    </article>
+  `).join('');
+  AOS.refresh();
+}
+renderMenu('all');
+
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelector('.tab-btn.active').classList.remove('active');
+    btn.classList.add('active');
+    renderMenu(btn.dataset.cat);
+  });
+});
+
+/* ===== NAV ===== */
+const nav = document.getElementById('nav');
+const navLinks = document.getElementById('navLinks');
+const navToggle = document.getElementById('navToggle');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+navToggle.addEventListener('click',()=>{
+  navLinks.classList.toggle('open');
+  const icon = navToggle.querySelector('i');
+  icon.className = navLinks.classList.contains('open') ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  navLinks.classList.remove('open');
+  navToggle.querySelector('i').className='fa-solid fa-bars';
+}));
+
+/* ===== BACK TO TOP ===== */
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll',()=>toTop.classList.toggle('show',window.scrollY>500));
+toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ===== LOADER ===== */
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('loader').classList.add('hidden');
+    document.body.classList.remove('no-scroll');
+    AOS.init({duration:900,once:true,offset:80,easing:'ease-out-cubic'});
+  },900);
+});
+
+/* ===== HELPERS ===== */
+function bookTable(e){e.preventDefault();alert('Grazie mille! Rezervarea ta a fost primită. Te contactăm în scurt pentru confirmare. 🍷');e.target.reset();return false;}
+function subscribe(e){e.preventDefault();alert('Merci! Te-ai abonat la newsletter-ul Dei Frati. 📩');e.target.reset();return false;}
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
